@@ -1,6 +1,6 @@
 ---
 - name: web-server configuration
-  host: prod
+  hosts: prod
   become: yes
 
   roles:
@@ -8,7 +8,7 @@
     - tomcat
 
 - name: artefactory assembly configuration
-  nosts: build
+  hosts: build
   become: yes
 
   roles:
