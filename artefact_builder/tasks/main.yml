@@ -9,10 +9,10 @@
     dest: /opt/
     clone: yes
     update: yes
-- name: mvn package
+- name: artefactory assembly
   command: mvn package
-    args:
-      chdir: /opt/
+  args:
+    chdir: /opt/
   
 - name: copy war to host
   fetch:
