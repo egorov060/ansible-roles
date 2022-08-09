@@ -1,2 +1,9 @@
 ---
 # tasks file for tomcat
+- name: Ensure tomcat packages is present
+  apt: name=tomcat9 state=present
+
+- name: copy artefactory
+  synchronize: src=hello-1.0.war dest={{dest_folder}}/hello-1.0.war
+  notify: 
+    - restart tomcat9
