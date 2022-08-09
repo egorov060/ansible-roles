@@ -1,0 +1,15 @@
+---
+- name: web-server configuration
+  host: prod
+  become: yes
+
+  roles:
+    - common
+    - tomcat
+
+- name: artefactory assembly configuration
+  nosts: build
+  become: yes
+
+  roles:
+    - artefact_builder
