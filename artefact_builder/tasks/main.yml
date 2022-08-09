@@ -1,7 +1,10 @@
 ---
 # tasks file for artefact_builder
-- name: Ensure maven packages is present
+- name: Ensure jdk packages is present
   apt: name=default-jdk state=present
+
+- name: Ensure maven packages is present
+  apt: name=maven state=present
 
 - name: Git clone
   git:
@@ -13,8 +16,9 @@
   command: mvn package
   args:
     chdir: /opt/
-  
-- name: copy war to host
-  fetch:
-    src: /opt/target/hello-1.0.war
-    dest: /home/master/ansible-roles/tomcat/files/
+
+- name: copy artefactory
+  synchronize:
+    mode: pull
+    src: '/opt/target/hello-1.0.war' 
+    dest: '/home/master/ansible-roles/tomcat/files/'
