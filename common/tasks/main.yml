@@ -1,0 +1,8 @@
+---
+# tasks file for common
+
+- name: install many packages
+  atp: name={{item}} state=installed
+  with_items:
+    -mc
+    -htop
